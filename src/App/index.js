@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
+import AppLayout from './AppLayout';
 
 const MyButton = styled.button`
   color: green;
@@ -17,9 +18,9 @@ const TomatoButton = styled(MyButton)`
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <AppLayout>
         <h1>Welcome to CryptoDash</h1>
-      </div>
+      </AppLayout>
     );
   }
 }
