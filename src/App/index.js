@@ -18,8 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MyButton>Hello World</MyButton>
-        <TomatoButton>Yessir!</TomatoButton>
+        <h1>Welcome to CryptoDash</h1>
       </div>
     );
   }
