@@ -11,7 +11,6 @@ export default function Content(props) {
         if (!firstVisit && !prices) {
           return <div>Loading Prices</div>;
         }
-        console.log(prices, firstVisit);
         return <div>{props.children}</div>;
       }}
     </AppContext.Consumer>
