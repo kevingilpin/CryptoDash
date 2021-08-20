@@ -34,12 +34,20 @@ export class AppProvider extends React.Component {
     let favorites = [...this.state.favorites];
     if (favorites.length < MAX_FAVORITES) {
       favorites.push(key);
+      localStorage.setItem(
+        'cryptoDash',
+        JSON.stringify({ favorites: favorites })
+      );
       this.setState({ favorites });
     }
   };
 
   removeCoin = (key) => {
     let favorites = [...this.state.favorites].filter((fav) => fav !== key);
+    localStorage.setItem(
+      'cryptoDash',
+      JSON.stringify({ favorites: favorites })
+    );
     this.setState({ favorites });
   };
 
@@ -56,15 +64,11 @@ export class AppProvider extends React.Component {
 
   setPage = (page) => this.setState({ page });
 
-  confirmFavorites = (favorites) => {
+  confirmFavorites = () => {
     this.setState({
       firstVisit: false,
       page: 'dashboard',
     });
-    localStorage.setItem(
-      'cryptoDash',
-      JSON.stringify({ favorites: this.state.favorites })
-    );
   };
 
   render() {
