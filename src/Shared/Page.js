@@ -4,7 +4,7 @@ import { AppContext } from '../App/AppProvider';
 export default function Page({ name, children }) {
   return (
     <AppContext.Consumer>
-      {({ page }) => {
+      {({ page, setFilteredCoins }) => {
         if (page !== name) {
           return null;
         }
