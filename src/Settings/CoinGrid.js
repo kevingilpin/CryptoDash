@@ -17,8 +17,14 @@ function getLowerSectionCoins(coinList, filteredCoins) {
         .sort((a, b) => {
           return parseInt(a.SortOrder) - parseInt(b.SortOrder);
         })
+        .slice(0, 50)
         .map((coin) => coin.Symbol)) ||
-    Object.keys(coinList).slice(0, 50)
+    Object.values(coinList)
+      .sort((a, b) => {
+        return parseInt(a.SortOrder) - parseInt(b.SortOrder);
+      })
+      .slice(0, 50)
+      .map((coin) => coin.Symbol)
   );
 }
 
