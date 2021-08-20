@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { backgroundColor2, fontSize2 } from '../Shared/Styles';
-import { AppContext } from '../App/AppProvider';
 import _ from 'lodash';
 import fuzzy from 'fuzzy';
 
@@ -43,17 +42,19 @@ function filterCoins(e, setFilteredCoins, coinList) {
   handleFilter(inputValue, coinList, setFilteredCoins);
 }
 
-export default function Search() {
+export default function Search({ setFilteredCoins, coinList }) {
+  useEffect(() => {
+    return () => {
+      setFilteredCoins(null);
+    };
+  }, [setFilteredCoins]);
+
   return (
-    <AppContext.Consumer>
-      {({ setFilteredCoins, coinList }) => (
-        <SearchGrid>
-          <h2>Search all coins</h2>
-          <SearchInput
-            onChange={(e) => filterCoins(e, setFilteredCoins, coinList)}
-          />
-        </SearchGrid>
-      )}
-    </AppContext.Consumer>
+    <SearchGrid>
+      <h2>Search all coins</h2>
+      <SearchInput
+        onChange={(e) => filterCoins(e, setFilteredCoins, coinList)}
+      />
+    </SearchGrid>
   );
 }

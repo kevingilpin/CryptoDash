@@ -31,14 +31,8 @@ function toProperCase(lower) {
 function ControlButton({ name }) {
   return (
     <AppContext.Consumer>
-      {({ page, setPage, setFilteredCoins }) => (
-        <ControlButtonElem
-          active={page === name}
-          onClick={() => {
-            setFilteredCoins(null);
-            setPage(name);
-          }}
-        >
+      {({ page, setPage }) => (
+        <ControlButtonElem active={page === name} onClick={() => setPage(name)}>
           {toProperCase(name)}
         </ControlButtonElem>
       )}
