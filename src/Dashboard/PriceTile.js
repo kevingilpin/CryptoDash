@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SelectableTile } from '../Shared/Tile';
-import { fontSize3, fontSizeBig } from '../Shared/Styles';
+import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles';
 import { CoinHeaderGridStyled } from '../Settings/CoinHeaderGrid';
 
 const JustifyRight = styled.div`
@@ -44,11 +44,17 @@ const PriceTileStyled = styled(SelectableTile)`
       grid-gap: 5px;
       justify-items: right;
     `}
+  ${(props) =>
+    props.isFavorite &&
+    css`
+      ${greenBoxShadow}
+      pointer-events: none;
+    `}
 `;
 
-function PriceTileLarge({ sym, data }) {
+function PriceTileLarge({ sym, data, isFavorite, setCurrentFavorite }) {
   return (
-    <PriceTileStyled>
+    <PriceTileStyled onClick={setCurrentFavorite} isFavorite={isFavorite}>
       <CoinHeaderGridStyled>
         <div>{sym}</div>
         <ChangePercent data={data} />
@@ -58,9 +64,13 @@ function PriceTileLarge({ sym, data }) {
   );
 }
 
-function PriceTileCompact({ sym, data }) {
+function PriceTileCompact({ sym, data, isFavorite, setCurrentFavorite }) {
   return (
-    <PriceTileStyled compact>
+    <PriceTileStyled
+      onClick={setCurrentFavorite}
+      compact
+      isFavorite={isFavorite}
+    >
       <JustifyLeft>{sym}</JustifyLeft>
       <ChangePercent data={data} />
       <div>${numberFormat(data.PRICE)}</div>
@@ -68,9 +78,21 @@ function PriceTileCompact({ sym, data }) {
   );
 }
 
-export default function PriceTile({ price, index }) {
+export default function PriceTile({
+  price,
+  index,
+  currentFavorite,
+  setCurrentFavorite,
+}) {
   let sym = Object.keys(price)[0];
   let data = price[sym]['USD'];
   let TileClass = index < 5 ? PriceTileLarge : PriceTileCompact;
-  return <TileClass sym={sym} data={data} />;
+  return (
+    <TileClass
+      sym={sym}
+      data={data}
+      isFavorite={sym === currentFavorite}
+      setCurrentFavorite={() => setCurrentFavorite(sym)}
+    />
+  );
 }

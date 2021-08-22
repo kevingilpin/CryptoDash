@@ -13,10 +13,16 @@ const PriceGridStyled = styled.div`
 export default function PriceGrid() {
   return (
     <AppContext.Consumer>
-      {({ prices }) => (
+      {({ prices, currentFavorite, setCurrentFavorite }) => (
         <PriceGridStyled>
           {prices.map((price, index) => (
-            <PriceTile index={index} price={price} />
+            <PriceTile
+              index={index}
+              price={price}
+              currentFavorite={currentFavorite}
+              setCurrentFavorite={setCurrentFavorite}
+              key={index}
+            />
           ))}
         </PriceGridStyled>
       )}
