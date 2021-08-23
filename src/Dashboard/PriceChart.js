@@ -10,9 +10,15 @@ ReactHighcharts.Highcharts.setOptions(HighchartsTheme);
 export default function PriceChart() {
   return (
     <AppContext.Consumer>
-      {({ currentFavorite }) => (
+      {({ currentFavorite, historical }) => (
         <Tile>
-          <ReactHighcharts config={highchartsConfig(currentFavorite)} />
+          {historical ? (
+            <ReactHighcharts
+              config={highchartsConfig(currentFavorite, historical)}
+            />
+          ) : (
+            <div>Loading Historical Data</div>
+          )}
         </Tile>
       )}
     </AppContext.Consumer>
