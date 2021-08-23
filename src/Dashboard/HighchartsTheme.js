@@ -1,6 +1,6 @@
 const lightTheme = false; // Or true
 
-export default {
+const themeData = {
   colors: [
     '#61d936',
     '#552ccb',
@@ -245,3 +245,5 @@ export default {
   textColor: '#C0C0C0',
   maskColor: 'rgba(255,255,255,0.3)',
 };
+
+export default themeData;

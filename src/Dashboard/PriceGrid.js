@@ -21,7 +21,7 @@ export default function PriceGrid() {
               price={price}
               currentFavorite={currentFavorite}
               setCurrentFavorite={setCurrentFavorite}
-              key={index}
+              key={`priceTile-${index}`}
             />
           ))}
         </PriceGridStyled>
