@@ -32,10 +32,10 @@ function getCoinsToDisplay(coinList, topSection, favorites, filteredCoins) {
   return topSection ? favorites : getLowerSectionCoins(coinList, filteredCoins);
 }
 
-export default function CoinGrid({ topSection }) {
+export default function CoinGrid({ topSection, favorites, clickHandler }) {
   return (
     <AppContext.Consumer>
-      {({ coinList, favorites, isInFavorites, filteredCoins }) => (
+      {({ coinList, filteredCoins }) => (
         <CoinGridStyled>
           {getCoinsToDisplay(
             coinList,
@@ -47,7 +47,8 @@ export default function CoinGrid({ topSection }) {
               topSection={topSection}
               coinKey={coinKey}
               key={coinKey}
-              isInFavorites={isInFavorites}
+              favorites={favorites}
+              clickHandler={clickHandler}
             />
           ))}
         </CoinGridStyled>

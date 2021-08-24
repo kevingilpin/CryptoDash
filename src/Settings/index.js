@@ -1,21 +1,19 @@
 import React from 'react';
-import ConfirmButton from './ConfirmButton';
-import WelcomeMessage from './WelcomeMessage';
 import Page from '../Shared/Page';
-import CoinGrid from './CoinGrid';
-import Search from './Search';
 import { AppContext } from '../App/AppProvider';
+import FavoritesSettings from './FavoritesSettings';
 
 export default function Settings() {
   return (
     <AppContext.Consumer>
-      {({ setFilteredCoins, coinList }) => (
+      {({ setFilteredCoins, coinList, favorites, confirmFavorites }) => (
         <Page name="settings">
-          <WelcomeMessage />
-          <CoinGrid topSection />
-          <ConfirmButton />
-          <Search setFilteredCoins={setFilteredCoins} coinList={coinList} />
-          <CoinGrid />
+          <FavoritesSettings
+            setFilteredCoins={setFilteredCoins}
+            coinList={coinList}
+            oldFavorites={favorites}
+            confirmFavorites={confirmFavorites}
+          />
         </Page>
       )}
     </AppContext.Consumer>
