@@ -15,19 +15,15 @@ export default function FavoritesSettings({
   const [favorites, setFavorites] = useState(oldFavorites);
 
   const addCoin = (key) => {
-    console.log('old faves', favorites);
     let newFavorites = [...favorites];
     if (newFavorites.length < MAX_FAVORITES) {
       newFavorites.push(key);
-      console.log('new faves', newFavorites);
       setFavorites(newFavorites);
     }
   };
 
   const removeCoin = (key) => {
-    console.log('old faves', favorites);
     let newFavorites = favorites.filter((fav) => fav !== key);
-    console.log('new faves', newFavorites);
     setFavorites(newFavorites);
   };
 
