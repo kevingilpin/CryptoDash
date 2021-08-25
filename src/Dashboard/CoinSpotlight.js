@@ -11,7 +11,7 @@ const SpotlightName = styled.h2`
 export default function CoinSpotlight() {
   return (
     <AppContext.Consumer>
-      {({ currentFavorite, coinList }) => (
+      {({ state: { currentFavorite, coinList } }) => (
         <Tile>
           <SpotlightName>{coinList[currentFavorite].CoinName}</SpotlightName>
           <CoinImage coin={coinList[currentFavorite]} spotlight />

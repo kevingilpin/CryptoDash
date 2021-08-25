@@ -43,12 +43,6 @@ function filterCoins(e, setFilteredCoins, coinList) {
 }
 
 export default function Search({ setFilteredCoins, coinList }) {
-  useEffect(() => {
-    return () => {
-      setFilteredCoins(null);
-    };
-  }, [setFilteredCoins]);
-
   return (
     <SearchGrid>
       <h2>Search all coins</h2>

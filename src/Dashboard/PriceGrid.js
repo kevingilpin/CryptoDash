@@ -13,14 +13,16 @@ const PriceGridStyled = styled.div`
 export default function PriceGrid() {
   return (
     <AppContext.Consumer>
-      {({ prices, currentFavorite, setCurrentFavorite }) => (
+      {({ state: { prices, currentFavorite }, dispatch }) => (
         <PriceGridStyled>
-          {prices.map((price, index) => (
+          {prices?.map((price, index) => (
             <PriceTile
               index={index}
               price={price}
               currentFavorite={currentFavorite}
-              setCurrentFavorite={setCurrentFavorite}
+              setCurrentFavorite={(sym) =>
+                dispatch({ type: 'setCurrentFavorite', value: sym })
+              }
               key={`priceTile-${index}`}
             />
           ))}

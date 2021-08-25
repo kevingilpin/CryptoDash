@@ -4,7 +4,8 @@ import { AppContext } from '../App/AppProvider';
 export default function Content(props) {
   return (
     <AppContext.Consumer>
-      {({ coinList, prices, firstVisit }) => {
+      {({ state: { coinList, prices, firstVisit } }) => {
+        console.log('building content...', firstVisit, prices);
         if (!coinList) {
           return <div>Loading Coins</div>;
         }

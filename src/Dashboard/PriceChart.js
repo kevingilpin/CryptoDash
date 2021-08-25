@@ -11,11 +11,13 @@ ReactHighcharts.Highcharts.setOptions(HighchartsTheme);
 export default function PriceChart() {
   return (
     <AppContext.Consumer>
-      {({ currentFavorite, historical, changeChartSelect, timeInterval }) => (
+      {({ state: { currentFavorite, historical, timeInterval }, dispatch }) => (
         <Tile>
           <ChartSelect
             defaultValue={timeInterval}
-            onChange={(e) => changeChartSelect(e.target.value)}
+            onChange={(e) =>
+              dispatch({ type: 'changeTimeInterval', value: e.target.value })
+            }
           >
             <option value="days">Days</option>
             <option value="weeks">Weeks</option>
