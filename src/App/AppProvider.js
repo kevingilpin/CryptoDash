@@ -28,8 +28,6 @@ function reducer(state, action) {
       return { ...state, ...saveFavorites(action.value) };
     case 'setCurrentFavorite':
       return { ...state, currentFavorite: action.value, historical: null };
-    case 'setFilteredCoins':
-      return { ...state, filteredCoins: action.value };
     case 'changeTimeInterval':
       return { ...state, timeInterval: action.value, historical: null };
     default:

@@ -10,10 +10,13 @@ const MAX_FAVORITES = 10;
 
 export default function Settings() {
   const {
-    state: { coinList, favorites, filteredCoins },
+    state: { coinList, favorites },
     dispatch,
   } = useContext(AppContext);
+
   const [tempFavorites, setTempFavorites] = useState(favorites);
+  const [filteredCoins, setFilteredCoins] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   const addCoin = (key) => {
     let newFavorites = [...tempFavorites];
@@ -44,10 +47,10 @@ export default function Settings() {
         }
       />
       <Search
-        setFilteredCoins={(filteredCoins) =>
-          dispatch({ type: 'setFilteredCoins', value: filteredCoins })
-        }
+        setFilteredCoins={setFilteredCoins}
         coinList={coinList}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       <CoinGrid
         favorites={tempFavorites}

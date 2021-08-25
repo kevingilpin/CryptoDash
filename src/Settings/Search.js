@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { backgroundColor2, fontSize2 } from '../Shared/Styles';
 import _ from 'lodash';
@@ -42,12 +42,21 @@ function filterCoins(e, setFilteredCoins, coinList) {
   handleFilter(inputValue, coinList, setFilteredCoins);
 }
 
-export default function Search({ setFilteredCoins, coinList }) {
+export default function Search({
+  setFilteredCoins,
+  coinList,
+  searchInput,
+  setSearchInput,
+}) {
   return (
     <SearchGrid>
       <h2>Search all coins</h2>
       <SearchInput
-        onChange={(e) => filterCoins(e, setFilteredCoins, coinList)}
+        value={searchInput}
+        onChange={(e) => {
+          setSearchInput(e.target.value);
+          filterCoins(e, setFilteredCoins, coinList);
+        }}
       />
     </SearchGrid>
   );
