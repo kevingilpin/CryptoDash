@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { backgroundColor2, fontSize2 } from '../Shared/Styles';
 import _ from 'lodash';

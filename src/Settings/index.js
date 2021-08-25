@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Page from '../Shared/Page';
 import { AppContext } from '../App/AppProvider';
 import ConfirmButton from './ConfirmButton';
@@ -10,13 +10,19 @@ const MAX_FAVORITES = 10;
 
 export default function Settings() {
   const {
-    state: { coinList, favorites },
+    state: { coinList, favorites, page },
     dispatch,
   } = useContext(AppContext);
 
   const [tempFavorites, setTempFavorites] = useState(favorites);
   const [filteredCoins, setFilteredCoins] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+
+  useEffect(() => {
+    setTempFavorites(favorites);
+    setFilteredCoins(null);
+    setSearchInput('');
+  }, [setTempFavorites, setFilteredCoins, setSearchInput, favorites, page]);
 
   const addCoin = (key) => {
     let newFavorites = [...tempFavorites];
