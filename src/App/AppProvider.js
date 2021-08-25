@@ -25,9 +25,7 @@ function reducer(state, action) {
     case 'changePage':
       return { ...state, page: action.value };
     case 'confirmFavorites':
-      console.log('confirming favorites');
-      let newState = saveFavorites(action.value);
-      return { ...state, ...newState };
+      return { ...state, ...saveFavorites(action.value) };
     case 'setCurrentFavorite':
       return { ...state, currentFavorite: action.value, historical: null };
     case 'setFilteredCoins':

@@ -14,7 +14,6 @@ export default function Settings() {
     dispatch,
   } = useContext(AppContext);
   const [tempFavorites, setTempFavorites] = useState(favorites);
-  console.log('building settings...');
 
   const addCoin = (key) => {
     let newFavorites = [...tempFavorites];

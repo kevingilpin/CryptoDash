@@ -8,9 +8,7 @@ cc.setApiKey(
 );
 
 export const fetchCoins = async (dispatch) => {
-  console.log('fetching coins...');
   let coinList = (await cc.coinList()).Data;
-  console.log('fetchCoins BTC: ', coinList['BTC']);
   dispatch({ type: 'updateCoins', value: coinList });
 };
 
@@ -30,7 +28,6 @@ const prices = async (favorites) => {
 };
 
 export const fetchPrices = async (favorites, dispatch) => {
-  console.log('fetching prices');
   let results = await prices(favorites);
   results = results.filter((price) => Object.keys(price).length);
   dispatch({ type: 'updatePrices', value: results });
